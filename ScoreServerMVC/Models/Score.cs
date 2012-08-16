@@ -13,7 +13,7 @@ namespace ScoreServerMVC.Models
         public int Points { get; set; }
         public DateTime Date { get; set; }
 
-    }
+   }
 
     public class ScoreDbContext : DbContext
     {

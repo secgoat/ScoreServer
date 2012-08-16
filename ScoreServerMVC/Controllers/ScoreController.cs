@@ -36,7 +36,7 @@ namespace ScoreServerMVC.Controllers
             newScore.Name = name;
             newScore.Points = points;
             newScore.Date = date;
-
+            
             db.Scores.Add(newScore);
             db.SaveChanges();
 
