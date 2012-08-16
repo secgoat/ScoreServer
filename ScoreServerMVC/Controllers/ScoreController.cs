@@ -17,7 +17,7 @@ namespace ScoreServerMVC.Controllers
         public ActionResult Index()
         {
             var scores = from s in db.Scores
-                         where s.Points > 1
+                         where s.Points > 0
                          select s;
 
             return View(scores.ToList());
@@ -47,5 +47,6 @@ namespace ScoreServerMVC.Controllers
             return View(scores.ToList());
         }
 
+       
     }
 }

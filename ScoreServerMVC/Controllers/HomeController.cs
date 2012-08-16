@@ -11,8 +11,8 @@ namespace ScoreServerMVC.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
-
             return View();
+            //return View("../Score/Index");
         }
 
         public ActionResult About()
