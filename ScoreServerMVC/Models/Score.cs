@@ -18,6 +18,6 @@ namespace ScoreServerMVC.Models
     public class ScoreDbContext : DbContext
     {
         public DbSet<Score> Scores { get; set; }
-
+        public DbSet<Users> Users { get; set; }
     }
 }

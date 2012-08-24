@@ -1,0 +1,40 @@
+﻿@model ScoreServerMVC.Models.Users
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UserModel</legend>
+
+    <div class="display-label">email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">password</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.password)
+    </div>
+
+    <div class="display-label">admin</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.admin)
+    </div>
+
+    <div class="display-label">firstName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+
+    <div class="display-label">lastName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.playerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

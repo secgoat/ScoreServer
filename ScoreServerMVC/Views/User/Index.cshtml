@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ScoreServerMVC.Models.Users>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Username
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            password
+        </th>
+        <th>
+            admin
+        </th>
+        <th>
+            firstName
+        </th>
+        <th>
+            lastName
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.admin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.playerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.playerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.playerID })
+        </td>
+    </tr>
+}
+
+</table>
