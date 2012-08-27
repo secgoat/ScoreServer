@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreServerMVC", "ScoreServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreSendingCLient", "ScoreSendingCLient\ScoreSendingCLient.csproj", "{F1B43011-ACF8-4871-91E9-944DA3EE7167}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreClientXNA", "ScoreClientXNA\ScoreClientXNA\ScoreClientXNA.csproj", "{B277F864-1892-4AD8-8A56-4F505EDC48AB}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "ScoreClientXNAContent", "ScoreClientXNA\ScoreClientXNAContent\ScoreClientXNAContent.contentproj", "{75FB7CAA-2983-45F1-9507-C7D8EDBF71FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,22 @@ Global
 		{F1B43011-ACF8-4871-91E9-944DA3EE7167}.Release|Mixed Platforms.Build.0 = Release|x86
 		{F1B43011-ACF8-4871-91E9-944DA3EE7167}.Release|x86.ActiveCfg = Release|x86
 		{F1B43011-ACF8-4871-91E9-944DA3EE7167}.Release|x86.Build.0 = Release|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Debug|x86.ActiveCfg = Debug|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Debug|x86.Build.0 = Debug|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Release|Any CPU.ActiveCfg = Release|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Release|x86.ActiveCfg = Release|x86
+		{B277F864-1892-4AD8-8A56-4F505EDC48AB}.Release|x86.Build.0 = Release|x86
+		{75FB7CAA-2983-45F1-9507-C7D8EDBF71FE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{75FB7CAA-2983-45F1-9507-C7D8EDBF71FE}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{75FB7CAA-2983-45F1-9507-C7D8EDBF71FE}.Debug|x86.ActiveCfg = Debug|x86
+		{75FB7CAA-2983-45F1-9507-C7D8EDBF71FE}.Release|Any CPU.ActiveCfg = Release|x86
+		{75FB7CAA-2983-45F1-9507-C7D8EDBF71FE}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{75FB7CAA-2983-45F1-9507-C7D8EDBF71FE}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

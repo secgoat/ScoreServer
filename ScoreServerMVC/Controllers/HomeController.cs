@@ -36,5 +36,23 @@ namespace ScoreServerMVC.Controllers
             return View(user);
 
         }
+
+        [HttpPost]
+        public ActionResult Register(Users user)
+        {
+            try
+            {
+                //TODO: insert logic here?
+                if (ModelState.IsValid)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View("User");
+            }
+            catch{ return View();}
+
+        }
     }
 }
