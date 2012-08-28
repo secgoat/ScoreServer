@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 using HtmlAgilityPack;
+using System.Xml;
+using System.Xml.XPath;
 using System.Net;
 using System.Text;
 using System.IO;
@@ -26,9 +28,13 @@ namespace ScoreClientXNA
         SpriteFont font;
         SpriteFont fontBold;
         SpriteFont fontItalic;
+        //vartoius types of input to parse
         String webPage;
         String rendertext;
         String[] renderArray;
+
+        //RenderTarget to display tables?
+        RenderTarget2D tableRenderTarget;
 
         public Game1()
         {
@@ -63,7 +69,8 @@ namespace ScoreClientXNA
 
             renderArray = File.ReadAllLines(@"render.txt");
 
-            StreamReader reader = new StreamReader(@"render.txt");
+            //StreamReader reader = new StreamReader(@"render.txt");
+            StreamReader reader = new StreamReader(@"PRPage.txt"); 
             rendertext = reader.ReadToEnd();
             reader.Close();
             // TODO: use this.Content to load your game content here
@@ -105,8 +112,8 @@ namespace ScoreClientXNA
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             //spriteBatch.DrawString(font, webPage, new Vector2(10, 10), Color.Black);
-            //ParseHTML(spriteBatch, rendertext); //this is the HTMLParse(String)
-            ParseHTML(spriteBatch, renderArray);//HTMLparse(string[])
+            ParseHTML(spriteBatch, rendertext); //this is the HTMLParse(String)
+            //ParseHTML(spriteBatch, renderArray);//HTMLparse(string[])
             spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -137,14 +144,57 @@ namespace ScoreClientXNA
              *  if <b> use bold font, if <i> use italic font
              *  still need to figure out how to prse and draw the table struture.
              */
-            HtmlDocument doc = new HtmlDocument();
+           HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(pageData);
-
             IEnumerable<HtmlNode> nodes = doc.DocumentNode.ChildNodes;
+            
 
             int num = 0; // keeps track of how many strings it has drawn and draws i
+            /*
+            HtmlNodeCollection tables = doc.DocumentNode.SelectNodes("//table");
+            foreach (HtmlNode table in doc.DocumentNode.SelectNodes("/html/body/div/section/div/table"))
+            {
+                spriteBatch.DrawString(font, table.Id, new Vector2(0, num * 16), Color.Black);
+                num++;
+                foreach (HtmlNode row in table.SelectNodes("tr"))
+                {
+                    spriteBatch.DrawString(font, "row", new Vector2(0, num * 16), Color.Black);
+                    num++;
+                    foreach (HtmlNode cell in row.SelectNodes("th|td"))
+                    {
+                        spriteBatch.DrawString(font, "cell: " + cell.InnerText, new Vector2(0, num * 16), Color.Black);
+                    }
+                }
+
+            }
+             * */
+            var tables = doc.DocumentNode.DescendantsAndSelf("table");
+           /* foreach (var table in tables)
+            {
+                var columns = table.Descendants("tr").First().Descendants("th").Select(td => td.InnerText).ToList();
+                var tbl = table.Descendants("tr")
+                    .Skip(1)
+                    .Select(tr => tr.Descendants("td").Select(td => td.InnerText).ToList());
+            } */
+            int rowNum = 0;
+            String rowContents = "";
+            foreach (HtmlNode cell in doc.DocumentNode.SelectNodes("//tr/td"))
+            {
+                
+                rowContents += cell.InnerText;
+                rowContents += "   ";
+                num++;
+                if (num % 3 == 0)
+                {
+                    spriteBatch.DrawString(font, rowContents, new Vector2(0, 16 * rowNum), Color.Black);
+                    rowNum++;
+                    rowContents = "";
+                }
+            }
+
             foreach (HtmlNode node in nodes)
             {
+                            
                 if (node.Name == "b")
                 {
                     spriteBatch.DrawString(fontBold, node.InnerText, new Vector2(0, num * 14), Color.Black);
