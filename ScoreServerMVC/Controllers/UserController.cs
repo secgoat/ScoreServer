@@ -18,6 +18,7 @@ namespace ScoreServerMVC.Controllers
 
         public ViewResult Index()
         {
+
             return View(db.Users.ToList());
         }
 

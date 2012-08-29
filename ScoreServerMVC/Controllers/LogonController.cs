@@ -22,7 +22,7 @@ namespace ScoreServerMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(LogonModel model)
+        public ActionResult Index(LogonModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -37,7 +37,11 @@ namespace ScoreServerMVC.Controllers
                         if (user.ValidatePassword(model.Password))
                         {
                             FormsAuthentication.SetAuthCookie(model.Username, false); //set non persistant cookie,
-                            return RedirectToAction("Index", "Home"); //return to home page
+                            //return RedirectToAction("Index", "Home"); //return to home page
+                            if (returnUrl != null)
+                                return Redirect(returnUrl);
+                            else
+                                return View("../Home/Index");
                         }
                         else
                         {

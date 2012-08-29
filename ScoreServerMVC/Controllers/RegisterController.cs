@@ -39,6 +39,7 @@ namespace ScoreServerMVC.Controllers
                 newUser.password = newUser.SetPassword(user.password);
                 db.Users.Add(newUser);
                 db.SaveChanges();
+                ViewBag.Message = "You have succesfully been registered!";
                 return View("../Home/Index");
             }
             ViewBag.Title = "FAILED!";

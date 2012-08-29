@@ -12,6 +12,7 @@ namespace ScoreServerMVC.Controllers
         public String Username { get; set; }
         
         [Required]
+        [DataType(DataType.Password)]
         public String Password { get; set; }
 
     }

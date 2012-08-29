@@ -1,8 +1,12 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    if (ViewBag.Message == null)
+    { 
+        ViewBag.Message = "Welcome to Pet Rancher";
+    }
 }
 
 <h2>@ViewBag.Message</h2>
 <p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+   
 </p>
