@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using ScoreServerMVC.Models;
+using System.Data.SqlServerCe;
 
 namespace ScoreServerMVC.Controllers
 {
@@ -24,13 +26,18 @@ namespace ScoreServerMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                Users user = db.Users.Select() (model.Username); //TODO: need to figure out how to select a user row by ID based on username
-                if (user != null)
+
+                var userList = db.Users.Where(u => u.Username.Equals(model.Username));
+                //Users user = db.Users.Select() (model.Username); //TODO: need to figure out how to select a user row by ID based on username
+                if (userList != null)
                 {
-                    if (user.ValidatePassword(model.Password))
+                    foreach (Users user in userList)
                     {
-                        FormsAuthentication.SetAuthCookie(model.Username, false); //set non persistant cookie,
-                        return RedirectToAction("Index", "Home"); //return to home page
+                        if (user.ValidatePassword(model.Password))
+                        {
+                            FormsAuthentication.SetAuthCookie(model.Username, false); //set non persistant cookie,
+                            return RedirectToAction("Index", "Home"); //return to home page
+                        }
                     }
                 }
                /* if (model.Username == "bob" && model.Password == "bob") //simulate DB call where username and password valid
