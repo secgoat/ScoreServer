@@ -15,11 +15,11 @@ namespace ScoreServerMVC.Models
 
         const String ConstantSalt = "fg809rTyu099#!"; //use this to salt password hashes
        // private String passwordSalt; // this is the generated salt. if null is set below in get
-        private String PasswordSalt 
+       /* private String PasswordSalt 
         {
             get { return (Guid.NewGuid().ToString("N")); }
             set { PasswordSalt = value; }
-        }
+        }*/
 
         [Key]
         public int playerID { get; set; }
@@ -65,7 +65,7 @@ namespace ScoreServerMVC.Models
         {
             using (var sha = SHA256.Create())
             {
-                var computedHash = sha.ComputeHash(Encoding.Unicode.GetBytes(PasswordSalt + pwd + ConstantSalt));
+                var computedHash = sha.ComputeHash(Encoding.Unicode.GetBytes(pwd + ConstantSalt));
                 return Convert.ToBase64String(computedHash);
             }
         }

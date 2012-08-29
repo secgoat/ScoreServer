@@ -31,12 +31,17 @@ namespace ScoreServerMVC.Controllers
                 //Users user = db.Users.Select() (model.Username); //TODO: need to figure out how to select a user row by ID based on username
                 if (userList != null)
                 {
+                    userList.Cast<Users>();
                     foreach (Users user in userList)
                     {
                         if (user.ValidatePassword(model.Password))
                         {
                             FormsAuthentication.SetAuthCookie(model.Username, false); //set non persistant cookie,
                             return RedirectToAction("Index", "Home"); //return to home page
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Invalid Username or Password"); //if not valid or not authenticated return error
                         }
                     }
                 }
@@ -45,10 +50,7 @@ namespace ScoreServerMVC.Controllers
                     FormsAuthentication.SetAuthCookie(model.Username, false); //set non persistant cookie,
                     return RedirectToAction("Index", "Home"); //return to home page
                 }*/
-                else
-                {
-                    ModelState.AddModelError("", "Invalid Username or Password"); //if not valid or not authenticated return error
-                }
+               
             }
            
             return View();
