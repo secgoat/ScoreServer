@@ -28,6 +28,7 @@ namespace ScoreServerMVC.Controllers
           
             else
             {
+                ViewBag.Error = "Unathorized Access! I'm afraid I Can't Do that Dave!";
                 return View("Error");
               
             }

@@ -1,0 +1,2 @@
+http://localhost:49707/Score
+name=bob&points=99999999&date=09/08/1980

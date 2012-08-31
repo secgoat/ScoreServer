@@ -12,7 +12,6 @@ namespace ScoreServerMVC.Controllers
         ScoreDbContext db = new ScoreDbContext();
         //
         // GET: /Register/
-
         public ActionResult Index()
         {
             return View();

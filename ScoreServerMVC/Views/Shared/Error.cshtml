@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Error";
-    
+    if (ViewBag.Error == null)
+    { 
+        ViewBag.Error = "Sorry, an error occurred while processing your request.";
+    }
 }
 
 <h2>
-    Sorry, an error occurred while processing your request.
+     @ViewBag.Error 
 </h2>
-<p>
-    @ViewBag.Error    
-</p>
+

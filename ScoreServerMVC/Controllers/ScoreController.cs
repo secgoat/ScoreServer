@@ -13,7 +13,7 @@ namespace ScoreServerMVC.Controllers
 
         //
         // GET: /Score/
-
+        [Authorize]
         public ActionResult Index()
         {
             var scores = from s in db.Scores
