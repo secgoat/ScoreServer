@@ -6,20 +6,31 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ScoreServerMVC.Models;
+using System.Web.Security;
 
 namespace ScoreServerMVC.Controllers
 { 
     public class UserController : Controller
     {
         private ScoreDbContext db = new ScoreDbContext();
-
-        //
+        private FormsIdentity id;// use this to get the user identity.
+        private FormsAuthenticationTicket ticket; //use this ot pull acopy of the ticket 
         // GET: /User/
-
-        public ViewResult Index()
+        public ViewResult Index(string returnUrl)
         {
 
-            return View(db.Users.ToList());
+            id = (FormsIdentity)User.Identity;
+            ticket = id.Ticket;
+            if (ticket.UserData == "1")
+            {
+                return View(db.Users.ToList());
+            }
+          
+            else
+            {
+                return View("Error");
+              
+            }
         }
 
         //

@@ -36,7 +36,13 @@ namespace ScoreServerMVC.Controllers
                     {
                         if (user.ValidatePassword(model.Password))
                         {
-                            FormsAuthentication.SetAuthCookie(model.Username, false); //set non persistant cookie,
+                            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, model.Username,
+                                DateTime.Now, DateTime.Now.AddMinutes(60), false, user.admin.ToString(),
+                                FormsAuthentication.FormsCookiePath);
+                            string encTicket = FormsAuthentication.Encrypt(ticket);
+                            Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+
+                            //FormsAuthentication.SetAuthCookie(model.Username, false); //set non persistant cookie,
                             //return RedirectToAction("Index", "Home"); //return to home page
                             if (returnUrl != null)
                                 return Redirect(returnUrl);
